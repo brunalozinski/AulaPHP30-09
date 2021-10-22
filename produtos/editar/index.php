@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+
   require('../../database/conexao.php');
 
   $produtoId = $_GET["id"];
@@ -64,7 +67,7 @@ $resultado = mysqli_query($conexao, $sqlCategoria);
             }
             
             ?>
-            
+
           </ul>
 
           <div class="input-group span2">
