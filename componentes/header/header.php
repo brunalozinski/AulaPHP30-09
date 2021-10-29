@@ -1,16 +1,16 @@
 <?php
 
-$raiz = "/BrunaLozinski/senai-icatalogo-mysqli-alunos/senai-icatalogo-mysqli-alunos/";
+$raiz = "/BrunaLozinski/senai-icatalogo-mysqli-alunos";
+
 
 ?>
-
 
 <link href="<?php echo $raiz?>/componentes/header/header.css" rel="stylesheet" />
 
 <header class="header">
 
     <figure>
-        <a href="/produtos">
+        <a href="<?php echo $raiz?>/produtos">
             <img src="<?php echo $raiz?>/imgs/logo.png" />
         </a>
     </figure>
@@ -25,7 +25,7 @@ $raiz = "/BrunaLozinski/senai-icatalogo-mysqli-alunos/senai-icatalogo-mysqli-alu
         </nav>
         <div id="container-login" class="container-login">
             <h1>Fazer Login</h1>
-            <form method="POST" action="/componentes/header/acoesLogin.php">
+            <form method="POST" action="<?php echo $raiz?>/componentes/header/acoesLogin.php">
                 <input type="hidden" name="acao" value="login" />
                 <input type="text" name="usuario" placeholder="Usuário" />
                 <input type="password" name="senha" placeholder="Senha" />
@@ -46,7 +46,7 @@ $raiz = "/BrunaLozinski/senai-icatalogo-mysqli-alunos/senai-icatalogo-mysqli-alu
     <?php
     }
     ?>
-   
+
 </header>
 
 <script lang="javascript">

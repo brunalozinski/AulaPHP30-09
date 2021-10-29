@@ -193,13 +193,16 @@
 
         case "editar":
 
+            $produtoId = $_POST["produtoId"];
+
+            /** PROCESSO DE VALIDAÇÃO **/
             $erros = validarCampos();
 
             if (count($erros) > 0) {
                 
                 $_SESSION["erros"] = $erros;
 
-                header("location: editar/index.php id=$produtoId");
+                header("location: editar/index.php?id=$produtoId");
 
                 exit;
 
@@ -207,7 +210,7 @@
 
             /** ATUALIZANDO A IMAGEM DO PRODUTO **/
 
-            $produtoId = $_POST["produtoId"];
+            
 
             if($_FILES["foto"]["error"] != UPLOAD_ERR_NO_FILE){
 

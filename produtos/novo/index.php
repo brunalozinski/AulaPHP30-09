@@ -1,18 +1,24 @@
 <?php
 
-session_start();
+  session_start();
 
-/*Conexão com o banco  */
-require('../../database/conexao.php');
+  /*
+  CONEXÃO COM O BANCO DE DADOS
+  
+  produto/novo
+  ../
+  produto/
+  ../
+  /dabase/conexao.php
 
-/* QUERY SQL*/
-$sql = "SELECT * FROM tbl_categoria";
+  */
+  require('../../database/conexao.php');
 
-/*executar a query sql na base de dados */
-$resultado = mysqli_query($conexao, $sql );
+  /*QUERY SQL*/
+  $sql = "SELECT * FROM tbl_categoria";
 
-
-
+  /*EXECUTAR A QUERY SQL NA BASE DE DADOS*/
+  $resultado = mysqli_query($conexao, $sql);
 
 ?>
 
@@ -31,8 +37,8 @@ $resultado = mysqli_query($conexao, $sql );
 
 <body>
 
-<!-- INCLUSÃO DO COMPONENTE HEADER -->
-<?php include('../../componentes/header/header.php'); ?>
+    <!-- INCLUSÃO DO COMPONENTE HEADER -->
+    <?php include('../../componentes/header/header.php'); ?>
 
   <div class="content">
 
@@ -48,18 +54,21 @@ $resultado = mysqli_query($conexao, $sql );
 
           <ul>
 
-          <?php
+            <?php
+            
+              if (isset($_SESSION["erros"])) {
+                
+                foreach ($_SESSION["erros"] as $erro) {
+                  
+                  echo "<li> $erro </li>";
 
-          if(isset($_SESSION["erros"])) {
+                }
 
-            foreach($_SESSION["erros"] as $erro) {
-              echo "<li> $erro </li>";
+                unset($_SESSION["erros"]);
 
-            }
-            unset($_SESSION["erros"]);
-          }
-          
-          ?>
+              }
+            
+            ?>
 
           </ul>
 
@@ -103,17 +112,16 @@ $resultado = mysqli_query($conexao, $sql );
             <label for="categoria">Categoria</label>
             <select id="categoria" name="categoria" >
               <option value="">SELECIONE</option>
-
-
-              <!-- INICIO DA LISTAGEM DE CATEGORIA VINDAS DO BANCO  -->
-              <?php
-              
-              while ($categoria = mysqli_fetch_array($resultado)) {
-              
-              ?>
+        
+                <!-- INICIO DA LISTAGEM DE CATEGORIAS VINDAS DO BANCO -->
+                <?php
+                
+                  while ($categoria = mysqli_fetch_array($resultado)) {
+   
+                ?>
                 <option value="<?php echo $categoria["id"]?>"><?php echo $categoria["descricao"]?></option>
-              <?php } ?>
-              <!-- FIM DA LISTAGEM DE CATEGORIAS VINDAS DO BANCO  -->
+                <?php } ?>
+                <!-- FIM DA LISTAGEM DE CATEGORIAS VINDAS DO BANCO -->
               
             </select>
 

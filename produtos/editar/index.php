@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+  session_start();
 
   require('../../database/conexao.php');
 
@@ -37,9 +36,8 @@ $resultado = mysqli_query($conexao, $sqlCategoria);
 
 <body>
 
-<!-- INCLUSÃO DO COMPONENTE HEADER -->
-<?php include('../../componentes/header/header.php'); ?>
-
+    <!-- INCLUSÃO DO COMPONENTE HEADER -->
+    <?php include('../../componentes/header/header.php'); ?>
  
   <div class="content">
 
@@ -56,22 +54,23 @@ $resultado = mysqli_query($conexao, $sqlCategoria);
           <h1>Editar Produto</h1>
           
           <ul>
+
             <?php
-            
-            if(isset($_SESSION["erros"])) {
               
-              foreach($_SESSION["erros"] as $erro) {
+              if (isset($_SESSION["erros"])) {
                 
-                echo "<li> $erro </li>";
-              
+                foreach ($_SESSION["erros"] as $erro) {
+                  
+                  echo "<li> $erro </li>";
+
+                }
+
+                unset($_SESSION["erros"]);
+
               }
-              
-              unset($_SESSION["erros"]);
-            
-            }
             
             ?>
-
+      
           </ul>
 
           <div class="input-group span2">
